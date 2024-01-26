@@ -1,0 +1,46 @@
+.UserHeader {
+  display: flex;
+  justify-content: center;
+
+  div {
+    width: 100%;
+    padding: 1em;
+    max-width: 1400px;
+
+    display: grid;
+    grid-template-columns: max-content auto;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+      "title nav"
+      "subtitle nav";
+
+    h1 {
+      grid-area: title;
+    }
+    h2 {
+      grid-area: subtitle;
+    }
+    nav {
+      grid-area: nav;
+    }
+
+    nav {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      gap: 1em;
+
+      li {
+        list-style-type: none;
+      }
+      a {
+        font-weight: 700;
+        &:hover {
+          text-decoration: underline;
+          text-decoration-thickness: 0.1em;
+          text-underline-offset: 0.1em;
+        }
+      }
+    }
+  }
+}

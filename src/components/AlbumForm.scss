@@ -1,0 +1,17 @@
+.AlbumForm {
+  width: 100%;
+  max-width: 80ch;
+  display: flex;
+  gap: 1em;
+
+  input {
+    font-weight: 700;
+    font-size: 1.25em;
+    padding: 0.25em 0.5em;
+    width: 100%;
+  }
+  button {
+    padding: 0.5em 1em;
+    border: none;
+  }
+}

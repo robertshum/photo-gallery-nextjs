@@ -1,0 +1,38 @@
+.PhotoView {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background: white;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  img {
+    padding: 1em;
+    height: 100%;
+    width: calc(100% - 300px);
+    object-fit: contain;
+  }
+
+  .close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50px;
+    height: 50px;
+  }
+  button {
+    width: 150px;
+    height: 150px;
+    font-size: 1em;
+    font-weight: 700;
+    padding: 0.5em;
+    border: none;
+    background: white;
+    position: relative;
+    z-index: 900;
+  }
+}

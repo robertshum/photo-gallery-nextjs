@@ -1,0 +1,10 @@
+.UploadForm {
+  width: 100%;
+  margin: 1em auto;
+  & > div label {
+    color: #000;
+  }
+  & > div label:hover {
+    color: #555;
+  }
+}
