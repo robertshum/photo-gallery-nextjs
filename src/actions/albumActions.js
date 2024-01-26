@@ -46,7 +46,7 @@ export const fetchAlbumsByUserId = async () => {
   return albums.rows;
 };
 
-export const fetchPhotosFromAlbumId = async () => {
+export const fetchPhotosFromAlbumId = async (albumId) => {
   const userId = Number(cookies().get('userId')?.value);
 
   if (!userId) {
@@ -60,7 +60,7 @@ export const fetchPhotosFromAlbumId = async () => {
   `;
   const args = [albumId, userId];
 
-  const albums = client.execute({ sql, args });
+  const albums = await client.execute({ sql, args });
 
   // return albums.filter(album => album.user_id === userId);
   console.log("album from server", albums);
