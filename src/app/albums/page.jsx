@@ -17,9 +17,9 @@ export default async function AlbumsPage(props) {
   return (
     <div>
       <h1>This is the AlbumsPage</h1>
-      <p>
+      <div>
         <AlbumList albums={albums}></AlbumList>
-      </p>
+      </div>
     </div>
   );
 }
