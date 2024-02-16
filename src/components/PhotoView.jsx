@@ -27,8 +27,16 @@ export default function PhotoView(props) {
   });
 
   const showNextPhoto = () => {
-    setCurrentIndex((currentIndex + 1) % photos.length);
-    window.history.replaceState(null, "", photos[currentIndex + 1].id);
+
+    let photoStateId;
+
+    photoStateId = currentIndex + 1;
+    if (currentIndex + 1 >= photos.length) {
+      photoStateId = photos.length - 1;
+    }
+
+    window.history.replaceState(null, "", photos[photoStateId].id);
+    setCurrentIndex(photoStateId % photos.length);
   };
   const showPrevPhoto = () => {
     if (currentIndex !== 0) {
@@ -39,7 +47,7 @@ export default function PhotoView(props) {
 
   return (
     <div className="PhotoView">
-      <button className="close" onClick={() => {}}>
+      <button className="close" onClick={() => { }}>
         X
       </button>
       <button onClick={showPrevPhoto}>{"<"}PREVIOUS</button>
