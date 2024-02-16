@@ -1,5 +1,6 @@
 'use server';
 
+import { redirect } from 'next/dist/server/api-utils';
 import client from './db';
 const { cookies } = require('next/headers');
 
@@ -66,5 +67,24 @@ export const fetchPhotosFromAlbumId = async (albumId) => {
   console.log("album from server", albums);
   return albums.rows;
 };
+
+export const fetchAlbumPhotosById = async (albumId) => {
+
+  const userId = Number(cookies().get("userId")?.value);
+
+  const sql =
+    "SELECT * FROM photos JOIN albums ON albums.id = photos.album_id WHERE album_id = ?";
+
+  const args = [albumId];
+
+  const result = await client.execute({ sql, args });
+
+  //if user does not match, go home
+  if (result.rows[0].user_id !== userId) {
+    redirect("/");
+  }
+
+  return result.rows;
+}
 
 
