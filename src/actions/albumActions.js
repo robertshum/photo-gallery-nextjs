@@ -67,4 +67,8 @@ export const fetchPhotosFromAlbumId = async (albumId) => {
   return albums.rows;
 };
 
+export const fetchAlbumPhotosById = async (albumId) => {
+  
+}
+
 
