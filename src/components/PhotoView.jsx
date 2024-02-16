@@ -1,10 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 import "./PhotoView.scss";
 
 export default function PhotoView(props) {
+  const router = useRouter();
   const { albumId, photoId, photos: initialPhotos, currentIndex: initialIndex } = props;
 
   const [photos, setPhotos] = useState(initialPhotos);
@@ -15,7 +17,7 @@ export default function PhotoView(props) {
   useEffect(() => {
     const goBack = ({ key }) => {
       if (key === "Escape") {
-        // history back
+        router.back();
       }
     };
 
@@ -25,8 +27,16 @@ export default function PhotoView(props) {
   });
 
   const showNextPhoto = () => {
-    setCurrentIndex((currentIndex + 1) % photos.length);
-    window.history.replaceState(null, "", photos[currentIndex + 1].id);
+
+    let photoStateId;
+
+    photoStateId = currentIndex + 1;
+    if (currentIndex + 1 >= photos.length) {
+      photoStateId = photos.length - 1;
+    }
+
+    window.history.replaceState(null, "", photos[photoStateId].id);
+    setCurrentIndex(photoStateId % photos.length);
   };
   const showPrevPhoto = () => {
     if (currentIndex !== 0) {
@@ -37,7 +47,7 @@ export default function PhotoView(props) {
 
   return (
     <div className="PhotoView">
-      <button className="close" onClick={() => {}}>
+      <button className="close" onClick={() => router.back()}>
         X
       </button>
       <button onClick={showPrevPhoto}>{"<"}PREVIOUS</button>
