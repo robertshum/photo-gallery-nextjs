@@ -1,10 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 import "./PhotoView.scss";
 
 export default function PhotoView(props) {
+  const router = useRouter();
   const { albumId, photoId, photos: initialPhotos, currentIndex: initialIndex } = props;
 
   const [photos, setPhotos] = useState(initialPhotos);
@@ -15,7 +17,7 @@ export default function PhotoView(props) {
   useEffect(() => {
     const goBack = ({ key }) => {
       if (key === "Escape") {
-        // history back
+        router.back();
       }
     };
 
