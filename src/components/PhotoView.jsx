@@ -47,7 +47,7 @@ export default function PhotoView(props) {
 
   return (
     <div className="PhotoView">
-      <button className="close" onClick={() => { }}>
+      <button className="close" onClick={() => router.back()}>
         X
       </button>
       <button onClick={showPrevPhoto}>{"<"}PREVIOUS</button>
